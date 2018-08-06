@@ -53,6 +53,12 @@ void draw()
   
   
 }
+
+void keyPressed() 
+{
+  if(key == ' ') {undulate = !undulate;}
+}
+
 void mousePressed(){
   branch();
   /*
