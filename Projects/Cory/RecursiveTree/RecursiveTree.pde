@@ -27,6 +27,7 @@ void draw()
     if(undulate)
     {
     float change = random(-1,1);
+    b.end.x = b.end.x + change;
     b.end.y = b.end.y + change;
     }
     b.show();
