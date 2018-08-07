@@ -13,10 +13,10 @@ PVector b = new PVector(width / 2, height - 100);
 //translate();
 Branch root = new Branch(a,b);
 tree.add(root);
-//for(int i = 0; i < 10; i++) 
-//  {
-//      branch();
-//  }
+for(int i = 0; i < 10; i++) 
+  {
+      branch();
+  }
 }
 
 void draw() 

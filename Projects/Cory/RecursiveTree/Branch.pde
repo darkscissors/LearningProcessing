@@ -6,6 +6,7 @@ class Branch
   public PVector end;
   public boolean done = false;
   public float angleChange = random(-PI/4,PI/4);
+  //public float angleChange = (7*PI)/15;
   public final float loss = .70;
   //public boolean isLeaf = random();
   public float length_;
