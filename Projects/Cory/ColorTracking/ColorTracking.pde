@@ -7,6 +7,7 @@ color trackedColor;
 
 boolean clicked = false;
 
+int threshhold_ = 20;
 
 void captureEvent(Capture video) 
 {
@@ -32,9 +33,9 @@ boolean withinThreshhold(color c, int threshhold)
     if(abs(green(trackedColor) - green(c)) < threshhold)
       if(abs(blue(trackedColor) - blue(c)) < threshhold)
       {
-      println("r:" + (abs(red(trackedColor) - red(c))));
-      println("g:" + (abs(green(trackedColor) - green(c))));
-      println("b:"+ (abs(blue(trackedColor) - blue(c))));
+      //println("r:" + (abs(red(trackedColor) - red(c))));
+      //println("g:" + (abs(green(trackedColor) - green(c))));
+      //println("b:"+ (abs(blue(trackedColor) - blue(c))));
       return true;
       
       }
@@ -53,31 +54,32 @@ void draw()
   video.loadPixels();
   image(video, 0, 0);
   
-  for(int x = 0; x < video.width; x++)
+  for(int x = 0; x < video.width; x+=10)
   {
-    for(int y = 0; y < video.height; y++) 
+    for(int y = 0; y < video.height; y+=10) 
     { 
       //Stuff to do to each pixel is: color = currentColor = video.pixels
       int location = x + y * video.width;
       //video.pixels[location] = do something here;
      
       if(clicked)
-      if(withinThreshhold(video.pixels[location], 20))
+      if(withinThreshhold(video.pixels[location], threshhold_))
       { 
-        fill(255);
-        ellipse(x,y,25,25);
+        noStroke();
+        fill(255,255,255,100);
+        ellipse(x,y,4,4);
       } 
       
     }
   }
   
-  color upper = trackedColor;
-  color lower = trackedColor;
-  fill(upper);
-  ellipse(10,10,10,10);
-  fill(lower);
-  ellipse(10,20,10,10);
-  noFill();
+  //color upper = trackedColor;
+  //color lower = trackedColor;
+  //fill(upper);
+  //ellipse(10,10,10,10);
+  //fill(lower);
+  //ellipse(10,20,10,10);
+  //noFill();
   
   fill(255);
   text("Tracked Color: ",450,200);
@@ -89,6 +91,13 @@ void draw()
 void keyPressed() 
 {
 if(key == ' ') {clicked = false;}
+}
+
+void mouseWheel(MouseEvent event) {
+  float e = event.getCount();
+  //println(e);
+  if(e == -1.0) {threshhold_++;} else {threshhold_--;}
+  println("New Threshhold: " + threshhold_);
 }
 
 void mouseClicked() 
