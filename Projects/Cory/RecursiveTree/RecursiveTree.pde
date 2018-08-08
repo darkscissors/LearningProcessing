@@ -21,6 +21,10 @@ for(int i = 0; i < 10; i++)
 
 void draw() 
 {
+  
+  if(mousePressed)
+  branch();
+  
   background(51);
   for(Branch b : tree) 
   {
@@ -59,21 +63,21 @@ void keyPressed()
   if(key == ' ') {undulate = !undulate;}
 }
 
-void mousePressed(){
-  branch();
-  /*
-  for(int i = tree.size() - 1 ; i >= 0 ; i-- )
-  {
-    Branch current = tree.get(i);
-    if(!current.done)
-    {
-      tree.add(current.branchA());
-      tree.add(current.branchB());
-    }
-    current.done = true;
-  }
-  */
-}
+//void mousePressed(){
+//  branch();
+//  /*
+//  for(int i = tree.size() - 1 ; i >= 0 ; i-- )
+//  {
+//    Branch current = tree.get(i);
+//    if(!current.done)
+//    {
+//      tree.add(current.branchA());
+//      tree.add(current.branchB());
+//    }
+//    current.done = true;
+//  }
+//  */
+//}
 
 void branch() 
 {
