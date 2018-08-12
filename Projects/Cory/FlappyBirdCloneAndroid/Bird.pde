@@ -18,21 +18,28 @@ class Bird
     this.vY = 0;
     score = 0;
   }
+  
+  public Bird() 
+  {
+    this.x = width - (width*.9);
+    this.y = height/2;
+    jump = -16;
+    grav = .8;
+    this.vY = 0;
+    score = 0;
+  }
 
   public void step() 
   {
     //if the birds height is above or equal to the bottom of the screen then we set them to it and remove their velocity
-    if(y >= height) 
+    if(y >= height || y <= 0) 
   {
-    y = height;
+    y = height/2;
     vY = 0;
     dead = true;
   }
   
-  if(y < 0)
-  {
-    dead = true;
-  }
+
   
 
     //we add gravity to the players velocity 
@@ -62,6 +69,11 @@ class Bird
     vY = 0;  //reset their velocity so you dont have to spam the jump key to recover
     vY = jump;  //set velocity to jump velocity so that the player cant build up additional velocity 
     y += vY;  //imediatly set the player height to the new vY so we dont trip the first step if statement
+    }
+    else 
+    {
+    vY = 0;
+    y = height/2;
     }
   }
 

@@ -8,12 +8,25 @@ public class Wall
   float w;
   float topY, botY;
   boolean hasReset = true;
+  
+  int difficulty;
+  
   public Wall(float x, float mid, float gap) 
   {
-    
+    difficulty = 0;
     this.x = x;
     this.mid = mid;
     this.gap = gap;
+    speed = 6;
+    w = 100;
+  }
+  
+  public Wall(float x) 
+  {
+    difficulty = 0;
+    this.x = x;
+    this.mid = height/2;
+    this.gap = 150;
     speed = 6;
     w = 100;
   }
@@ -42,7 +55,7 @@ public class Wall
   {
     if(x < 0)
     {
-    x = width + 25;
+    x = width;
     randomize();
     }
     
@@ -71,9 +84,25 @@ public class Wall
 
   }
   
+  float clamp(float input, float min, float max) 
+  {
+    if(input >= min && input <= max) 
+    return input;
+    else if (input <= min)
+    return min;
+    else if (input >= max)
+    return max;
+    else return -1;
+  }
+  
   void randomize() 
   {
-    gap = random(height*.1,height/3);
+    float newGapMax = clamp(-(difficulty * 10) + height/4,height*.1,height/4);
+    //float gap_ = clamp(newGap,height*.1,height/4 );
+    gap = abs(random(height*.08,newGapMax));
+    
+    if(gap < height*.08) gap = height*.08;
+    
     mid = random(gap + 10, height - gap - 10);
     hasReset = true;
     

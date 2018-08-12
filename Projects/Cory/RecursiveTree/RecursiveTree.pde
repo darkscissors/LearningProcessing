@@ -7,7 +7,7 @@ int count = 0;
 boolean undulate = false;
 void setup() 
 {
-size(400,400);
+size(800,800);
 PVector a = new PVector(width / 2, height);
 PVector b = new PVector(width / 2, height - 100);
 //translate();
@@ -15,7 +15,7 @@ Branch root = new Branch(a,b);
 tree.add(root);
 for(int i = 0; i < 10; i++) 
   {
-      branch();
+      //branch();
   }
 }
 
