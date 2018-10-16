@@ -11,7 +11,7 @@ class Bird
   int score;
   float speed;
   float belowWall = 0;
-  boolean isJumping  false;
+  boolean isJumping = false;
 
   boolean goingDown = false;
 
