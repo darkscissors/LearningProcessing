@@ -11,6 +11,7 @@ class Bird
   int score;
   float speed;
   float belowWall = 0;
+  boolean isJumping  false;
 
   boolean goingDown = false;
 
@@ -32,25 +33,25 @@ class Bird
     {
       y = height - belowWall;
       vY = 0;
-
+      isJumping = false;
+      
     }
     else
     {
     //we add gravity to the players velocity
     vY += grav;  //gravity pulls them downward (pos number)
     y += vY;  //velocity is added to their height (higher number = lower to screen)
-
+    isJumping = true;
   }
     //if(dead)
     //println("DEAD");
-
   }
 
   public void show()
   {
-    fill(255);
+    fill(255,255,255,150);
     if(goingDown)
-    fill(255,0,0);
+    fill(255,0,0,150);
     ellipse(x,y,32,32);
 
   }
