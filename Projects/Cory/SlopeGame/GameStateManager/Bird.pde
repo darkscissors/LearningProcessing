@@ -7,8 +7,6 @@ class Bird
   float x, y;
   float grav;
   float vY;
-  boolean dead = false;
-  int score;
   float speed;
   float belowWall = 0;
   boolean isJumping = false;
@@ -22,7 +20,6 @@ class Bird
     jump = -16;
     grav = .8;
     this.vY = 0;
-    score = 0;
   }
 
   public void step()
@@ -43,8 +40,7 @@ class Bird
     y += vY;  //velocity is added to their height (higher number = lower to screen)
     isJumping = true;
   }
-    //if(dead)
-    //println("DEAD");
+
   }
 
   public void show()
@@ -59,12 +55,11 @@ class Bird
 
   public void jump()
   {
-    if(!dead)
-    {
+
     vY = 0;  //reset their velocity so you dont have to spam the jump key to recover
     vY = jump;  //set velocity to jump velocity so that the player cant build up additional velocity
     y += vY;  //imediatly set the player height to the new vY so we dont trip the first step if statement
-    }
+
   }
 
 }

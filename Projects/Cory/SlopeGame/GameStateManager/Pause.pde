@@ -1,6 +1,23 @@
 /*
 this class is going to have:
 a show() function used to show the pause menu
-a resume() function that can be clicked as a button to go remove this menu from the screen()
-a quit() function to take the player out of the pause menu and to the main menu class
 */
+public class Pause
+{
+  boolean isPaused;
+
+  public Pause()
+  {
+    isPaused = false;
+  }
+
+  public void show()
+  {
+    isPaused = true;
+    fill(255,100,95);
+
+    if(frameCount % 60 <= 30)
+    rect(30,20,55,55);
+  }
+
+}

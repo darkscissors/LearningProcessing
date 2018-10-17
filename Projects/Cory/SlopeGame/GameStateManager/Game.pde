@@ -21,15 +21,21 @@ float terrainMap[] = new float[width];
 
   public void show()
   {
-    game.xScale+=0.008 + game.player.speed * 1.25; // this line determines how fast the game scrolls
+    //game.xScale+=0.008 + game.player.speed * 1.25; // this line determines how fast the game scrolls
     drawGround();
     player.show();
-    player.step();
+
     if(!player.isJumping) // here we check if the player is in the air to not apply the modification of velocity
       {
       modBirdVel();
       }
-      text(player.speed, 10, 30);
+      text("Speed: " + player.speed * 1000, 10, 30);
+  }
+
+  public void step()
+  {
+    game.xScale+=0.008 + game.player.speed * 1.25; // this line determines how fast the game scrolls
+    player.step();
   }
 
   public void modBirdVel()
