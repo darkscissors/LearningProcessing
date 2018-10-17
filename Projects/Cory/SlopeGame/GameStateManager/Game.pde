@@ -8,7 +8,7 @@ class Game
 {
 public Bird player;
 float terrain;
-float xScale;
+float xScale; // the current distance from 0 the line has been moved, increment this for boosts
 float distance;
 float terrainMap[] = new float[width];
   public Game()
@@ -21,10 +21,15 @@ float terrainMap[] = new float[width];
 
   public void show()
   {
+    game.xScale+=0.008 + game.player.speed * 1.25; // this line determines how fast the game scrolls
     drawGround();
     player.show();
     player.step();
-    modBirdVel();
+    if(!player.isJumping) // here we check if the player is in the air to not apply the modification of velocity
+      {
+      modBirdVel();
+      }
+      text(player.speed, 10, 30);
   }
 
   public void modBirdVel()
@@ -41,19 +46,19 @@ float terrainMap[] = new float[width];
     else
     {
       player.goingDown = false;
-      player.speed += 0.0001*(terrainMap[(int)player.x] - terrainMap[(int)player.x + 5]);
-      player.speed *= .8;
+      player.speed += 0.00009*(terrainMap[(int)player.x] - terrainMap[(int)player.x + 5]);
+      player.speed *= .95;
       //print("going up");
 
     }
-    xScale += player.speed / 4;
+    //xScale += player.speed / 4;
 
   }
 
   public void drawGround()
   {
     terrainMap = new float[width];
-    float xScale_ = xScale;
+    float xScale_ = xScale; //the underscore version is a temporary variable to for drawing
     for (int x = 0; x < width; x++)
     {
 

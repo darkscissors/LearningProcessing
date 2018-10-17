@@ -13,9 +13,9 @@ void draw()
 {
   background(52);
   game.show();
-  game.xScale+=0.008;
 }
 
 void keyPressed() {
   if (key == ' ') game.player.jump();
+  if (key == 'm') game.player.speed += 0.01;
 }

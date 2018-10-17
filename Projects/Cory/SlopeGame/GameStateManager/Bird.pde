@@ -28,13 +28,13 @@ class Bird
   public void step()
   {
     //if the birds height is above or equal to the bottom of the screen then we set them to it and remove their velocity
-
+    if(speed < 0) speed = 0;
     if(y > height - belowWall)
     {
       y = height - belowWall;
       vY = 0;
       isJumping = false;
-      
+
     }
     else
     {
