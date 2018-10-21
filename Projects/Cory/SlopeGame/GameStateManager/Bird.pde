@@ -47,15 +47,14 @@ class Bird
   {
     fill(255,255,255,150);
     if(goingDown)
-    fill(255,0,0,150);
+    fill(0,255,0,150);
     ellipse(x,y,32,32);
-
   }
 
 
   public void jump()
   {
-
+    goingDown = false; //reset going down in order to make the player not stay green in the air
     vY = 0;  //reset their velocity so you dont have to spam the jump key to recover
     vY = jump;  //set velocity to jump velocity so that the player cant build up additional velocity
     y += vY;  //imediatly set the player height to the new vY so we dont trip the first step if statement

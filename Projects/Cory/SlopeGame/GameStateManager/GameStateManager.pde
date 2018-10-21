@@ -15,9 +15,9 @@ void draw()
 {
   background(52);
 
-  if(!menu.menuOpen)
+  if(!menu.menuOpen)//if the main menu is not open we show the game
   {
-    game.show();
+    game.show(pause.isPaused); //we pass our pause state so that the game can act accordingly to being paused
     if(!pause.isPaused)
     {
       game.step();
@@ -25,13 +25,11 @@ void draw()
     else
     {
       pause.show();
-
     }
   }
-  else
+  else// else we show the menu
   {
     menu.show();
-
   }
 }
 

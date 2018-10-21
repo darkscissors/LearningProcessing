@@ -19,23 +19,22 @@ float terrainMap[] = new float[width];
 
   }
 
-  public void show()
+  public void show(boolean paused)
   {
     //game.xScale+=0.008 + game.player.speed * 1.25; // this line determines how fast the game scrolls
     drawGround();
     player.show();
-
-    if(!player.isJumping) // here we check if the player is in the air to not apply the modification of velocity
-      {
-      modBirdVel();
-      }
-      text("Speed: " + player.speed * 1000, 10, 30);
+    text("Speed: " + player.speed * 1000, 10, 30);
   }
 
   public void step()
   {
     game.xScale+=0.008 + game.player.speed * 1.25; // this line determines how fast the game scrolls
     player.step();
+    if(!player.isJumping) // here we check if the player is in the air to not apply the modification of velocity
+      {
+      modBirdVel();
+      }
   }
 
   public void modBirdVel()
@@ -67,8 +66,6 @@ float terrainMap[] = new float[width];
     float xScale_ = xScale; //the underscore version is a temporary variable to for drawing
     for (int x = 0; x < width; x++)
     {
-
-
         terrain = map(noise(xScale_),0,1,1,300);
         xScale_ +=0.003;
         terrainMap[x] = terrain;
