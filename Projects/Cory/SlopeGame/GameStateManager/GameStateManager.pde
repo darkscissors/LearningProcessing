@@ -37,7 +37,7 @@ void mousePressed()
 {
   if(menu.menuOpen)
   {
-    menu.isClickedStart(mouseX,mouseY);
+    menu.isClicked(mouseX,mouseY);
 
   }
 

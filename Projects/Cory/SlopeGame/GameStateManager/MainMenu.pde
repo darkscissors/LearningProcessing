@@ -21,8 +21,9 @@ int sizeX,sizeY;
 
   }
 
-  public void isClickedStart(int x, int y)
+  public void isClicked(int x, int y)
   {
+    // checks if the click is in the menu area
     if(x >= width/2 && x <= width/2 + sizeX)
       if(y >= height/2 && x <= height/2 + sizeY)
       {
