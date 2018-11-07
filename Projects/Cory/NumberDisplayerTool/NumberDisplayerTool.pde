@@ -5,22 +5,25 @@ void setup()
 {
   size(1000,600);
   background(52);
-  for(int i = 0; i < 25; i++)
+
+  Equation eq = new Equation("y=16x+48");
+  println("Y(4): " + eq.getY(4));
+  println("b: " + eq.getB());
+
+  int highest = -999999;
+  for(int i = 0; i < 100; i++)
   {
-    nums2.add(i);
+    nums2.add((int)eq.getY(i));
+    if(eq.getY(i) > highest) highest = (int)eq.getY(i);
   }
-  numDis = new NumberDisplayer();
 
 
-
-  //numDis.changeSize(25);
-
+  numDis = new NumberDisplayer(highest);
 }
 
 void draw()
 {
   numDis.show(nums2);
-
 }
 
 void keyPressed() // key binds
@@ -47,5 +50,5 @@ void rerandomize()
 {
   nums2.clear();
   for(int i = 0; i < numDis.size; i++)
-    nums2.add((int)random(0,100));
+    nums2.add((int)random(0,numDis.maxNum));
 }

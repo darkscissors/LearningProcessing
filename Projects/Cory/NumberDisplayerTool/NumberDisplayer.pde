@@ -3,10 +3,17 @@ import java.util.ArrayList;
 class NumberDisplayer
 {
   int size;
+  int maxNum;
   ArrayList<Integer> nums2 = new ArrayList<Integer>();
+
+  public NumberDisplayer(int maxNum)
+  {
+    this.maxNum = maxNum;
+  }
+
   public NumberDisplayer()
   {
-
+    this.maxNum = 100;
   }
 
   void show(ArrayList arr)
@@ -19,8 +26,6 @@ class NumberDisplayer
     text("Size: " + size, 10,10);
   }
 
-
-
   void changeSize(int newSize) // we use a function to change size so we dont have to remember to rerandomize the numbers
   {
     if(newSize > 1 && newSize != size)
@@ -28,7 +33,7 @@ class NumberDisplayer
         if(newSize > size)
         {
           for(int i = 0; i < newSize - size; i++)
-          nums2.add((int)random(0,100));
+          nums2.add((int)random(0,maxNum));
         }
         else
         {
@@ -46,7 +51,7 @@ class NumberDisplayer
     {
       int x = (int)map(i,0,size,0,width);
       stroke(100,255,100);
-      int recHeight =(int)map((int)nums2.get(i),0,100,1,550);
+      int recHeight =(int)map((int)nums2.get(i),0,maxNum,1,550);
       rect(x,550,width/size,-1 * recHeight);
       int xmid = x + (width/size)/2;
       stroke(0);
