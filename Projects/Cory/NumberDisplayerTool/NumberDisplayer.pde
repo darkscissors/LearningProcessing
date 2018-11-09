@@ -6,14 +6,17 @@ class NumberDisplayer
   int maxNum;
   ArrayList<Integer> nums2 = new ArrayList<Integer>();
 
-  public NumberDisplayer(int maxNum)
+  public NumberDisplayer(int maxNum, int size)
   {
     this.maxNum = maxNum;
+    this.size = size;
   }
 
   public NumberDisplayer()
   {
     this.maxNum = 100;
+    this.size = 100;
+
   }
 
   void show(ArrayList arr)

@@ -17,6 +17,21 @@ class Equation
     }
   }
 
+  public void setEQ(String eq)
+  {
+    this.equation = eq.substring(2);
+    for(int i = 0; i < this.equation.length(); i++)
+    {
+      if(this.equation.charAt(i) == '+')
+      {
+        plusLoc = i;
+      }
+
+
+    }
+
+  }
+
   public float getB()
   {
     String bee = this.equation.substring(plusLoc + 1);
