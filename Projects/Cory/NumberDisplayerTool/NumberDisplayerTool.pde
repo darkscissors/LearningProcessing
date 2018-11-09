@@ -9,14 +9,14 @@ void setup()
   size(1000,600);
   background(52);
   ui = new UI();
-  eq = new Equation("y=16x+48");
+  eq = new Equation("y=-1x+48");
   // println("Y(4): " + eq.getY(4));
   // println("b: " + eq.getB());
 
   //int highest = -999999;
 
   //generate();
-  numDis = new NumberDisplayer(100,100);
+  numDis = new NumberDisplayer(100,0,100);
   rerandomize();
 
 }
@@ -69,11 +69,14 @@ void generate()
 {
   nums2.clear();
   int highest = -9999999;
+  int lowest = 0;
   for(int i = 0; i < numDis.size; i++) //generate numbers from equation
   {
     nums2.add((int)eq.getY(i));
     if(eq.getY(i) > highest) highest = (int)eq.getY(i);
+    if(eq.getY(i) < lowest) lowest = (int)eq.getY(i);
   }
+  numDis.lowestNum = lowest;
   numDis.maxNum = highest;
 }
 

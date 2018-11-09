@@ -4,22 +4,25 @@ class NumberDisplayer
 {
   int size;
   int maxNum;
+  int lowestNum;
   ArrayList<Integer> nums2 = new ArrayList<Integer>();
 
-  public NumberDisplayer(int maxNum, int size)
+  public NumberDisplayer(int maxNum, int lowestNum, int size)
   {
     this.maxNum = maxNum;
     this.size = size;
+    this.lowestNum = lowestNum;
   }
 
   public NumberDisplayer()
   {
     this.maxNum = 100;
     this.size = 100;
+    this.lowestNum = 0;
 
   }
 
-  void show(ArrayList arr)
+  void show(ArrayList arr) //shows the array given and changes to the size of the array given
   {
     changeSize(arr.size());
     nums2 = arr;
@@ -47,14 +50,14 @@ class NumberDisplayer
       }
   }
 
-  void drawNumbers() // this function draws the numbers using rectangles to represent each number and draws the number or each rectangle below it, we stagger the numbers so it is more easily readable
+  private void drawNumbers() // this function draws the numbers using rectangles to represent each number and draws the number or each rectangle below it, we stagger the numbers so it is more easily readable
   {
     fill(255,100,100);
     for (int i = 0; i < size; i++)
     {
       int x = (int)map(i,0,size,0,width);
       stroke(100,255,100);
-      int recHeight =(int)map((int)nums2.get(i),0,maxNum,1,550);
+      int recHeight =(int)map((int)nums2.get(i),lowestNum,maxNum,1,550); //this determines the rectangles height using a map
       rect(x,550,width/size,-1 * recHeight);
       int xmid = x + (width/size)/2;
       stroke(0);
