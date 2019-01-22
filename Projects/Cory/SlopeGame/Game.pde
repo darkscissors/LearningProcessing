@@ -51,8 +51,8 @@ float terrainMap[] = new float[width];
     else
     {
       player.goingDown = false;
-      player.speed += 0.00009*(terrainMap[(int)player.x] - terrainMap[(int)player.x + 5]);
-      player.speed *= .95;
+      player.speed += 0.00006*(terrainMap[(int)player.x] - terrainMap[(int)player.x + 5]);
+      player.speed *= .98;
       //print("going up");
 
     }
